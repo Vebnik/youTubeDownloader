@@ -1,21 +1,29 @@
 const fs = require('fs');
 const path = require(`path`)
 const ytdl = require('ytdl-core')
-const {mkdir} = require("ffmpeg/lib/utils");
+//const {mkdir} = require("ffmpeg/lib/utils");
 
 
 async function downloadVideo(idVideo, doc) {
 
 	ytdl.getInfo(`${idVideo}`)
-		.then(info => {
+		.then(async info => {
 			let downloadDetails = {
-				savePath: path.join(__dirname,'media',`${info.videoDetails.title}.mp4`),
+				savePath: path.join(__dirname.split('resources')[0],'media',`${info.videoDetails.title}.mp4`),
 				counterSize: 0,
 				quality: [],
 				fullDetails: info
 			}
 
-			mkdir(path.join(__dirname, 'media'))
+			console.log(__dirname)
+
+			await fs.mkdir(path.join(__dirname.split('resources')[0], 'media'), (err) => {
+				if (err) {
+					console.log(err)
+				} else {
+					console.log('Dir successful')
+				}
+			})
 
 			ytdl(`${idVideo}`, {highWaterMark: 4096,dlChunkSize: 0, quality: 'highest'})
 				.on('progress', (event) => {

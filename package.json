@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "keywords": [
     "youtubeNode"
@@ -17,6 +18,14 @@
     "ytdl-core": "^4.11.0"
   },
   "devDependencies": {
-    "electron": "^17.1.2"
+    "electron": "^17.1.2",
+    "electron-builder": "^22.14.13"
+  },
+  "build": {
+    "appId": "github.com.vebnik",
+    "win": {
+      "target": "portable",
+      "icon": "media/youtube.ico"
+    }
   }
 }

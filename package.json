@@ -1,0 +1,22 @@
+{
+  "name": "youtubedownloader",
+  "version": "1.0.0",
+  "description": "forDownloadYt",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "youtubeNode"
+  ],
+  "author": "nikEvs",
+  "license": "ISC",
+  "dependencies": {
+    "ffmpeg": "^0.0.4",
+    "ytdl-core": "^4.11.0"
+  },
+  "devDependencies": {
+    "electron": "^17.1.2"
+  }
+}
